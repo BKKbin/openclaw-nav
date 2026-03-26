@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🦞 OpenClaw 龙虾 — 大厂官方 & 资源整合导航</title>
+  <style>
+    :root {
+      --bg: #0b0e15;
+      --card: #13182200;
+      --card-solid: #131822;
+      --border: #1e2a3a;
+      --accent: #2563eb;
+      --accent2: #38bdf8;
+      --accent3: #7c3aed;
+      --text: #e2e8f0;
+      --muted: #64748b;
+      --tag-bg: #1e293b;
+      --tag-text: #7dd3fc;
+      --green: #4ade80;
+      --orange: #fb923c;
+      --pink: #f472b6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    /* HEADER */
+    header {
+      position: relative;
+      overflow: hidden;
+      padding: 52px 24px 40px;
+      text-align: center;
+      background: linear-gradient(180deg, #0f1629 0%, #0b0e15 100%);
+      border-bottom: 1px solid var(--border);
+    }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(37,99,235,0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 5px 14px; border-radius: 20px;
+      background: rgba(37,99,235,0.15);
+      border: 1px solid rgba(37,99,235,0.35);
+      color: var(--accent2);
+      font-size: 0.78rem; font-weight: 600;
+      margin-bottom: 20px;
+      letter-spacing: 0.04em;
+    }
+    h1 {
+      font-size: 2.6rem; font-weight: 900;
+      background: linear-gradient(135deg, #fff 0%, var(--accent2) 50%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2; margin-bottom: 14px;
+    }
+    .subtitle { color: var(--muted); font-size: 1rem; max-width: 680px; margin: 0 auto; }
+    .subtitle strong { color: var(--accent2); }
+    .stats {
+      display: flex; gap: 28px; justify-content: center;
+      margin-top: 24px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num { font-size: 1.5rem; font-weight: 800; color: var(--accent2); }
+    .stat-label { font-size: 0.75rem; color: var(--muted); }
+
+    /* STICKY NAV */
+    .nav-wrap {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(11,14,21,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 24px;
+    }
+    .nav-inner {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; gap: 6px; flex-wrap: wrap;
+      align-items: center;
+    }
+    .nav-label { color: var(--muted); font-size: 0.78rem; margin-right: 4px; font-weight: 600; }
+    .nav-tab {
+      padding: 5px 16px; border-radius: 20px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer; font-size: 0.82rem; font-weight: 500;
+      transition: all 0.18s; user-select: none;
+    }
+    .nav-tab:hover { border-color: var(--accent); color: var(--accent2); }
+    .nav-tab.active {
+      background: var(--accent); border-color: var(--accent);
+      color: #fff;
+    }
+
+    /* MAIN */
+    main { max-width: 1280px; margin: 0 auto; padding: 32px 24px 80px; }
+
+    /* SECTION */
+    .section { margin-bottom: 52px; }
+    .section-head {
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 22px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .section-icon {
+      width: 42px; height: 42px; border-radius: 11px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; flex-shrink: 0;
+    }
+    .section-title { font-size: 1.25rem; font-weight: 800; }
+    .section-sub { color: var(--muted); font-size: 0.82rem; margin-top: 3px; }
+
+    /* GRID */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 16px; }
+    .grid-wide { grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); }
+
+    /* CARD */
+    .card {
+      background: var(--card-solid);
+      border: 1px solid var(--border);
+      border-radius: 14px; padding: 20px 22px;
+      transition: border-color 0.2s, transform 0.15s, box-shadow 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .card::after {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 2px;
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .card:hover { border-color: rgba(37,99,235,0.5); transform: translateY(-2px); box-shadow: 0 10px 36px rgba(0,0,0,0.4); }
+    .card:hover::after { opacity: 1; }
+    .card.blue::after { background: linear-gradient(90deg, var(--accent), var(--accent2)); }
+    .card.purple::after { background: linear-gradient(90deg, var(--accent3), var(--pink)); }
+    .card.green::after { background: linear-gradient(90deg, #059669, #4ade80); }
+    .card.orange::after { background: linear-gradient(90deg, #d97706, var(--orange)); }
+
+    .card-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 11px; }
+    .card-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: var(--tag-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; flex-shrink: 0;
+    }
+    .card-name { font-size: 1rem; font-weight: 700; line-height: 1.3; }
+    .card-sub { color: var(--muted); font-size: 0.76rem; margin-top: 2px; }
+
+    .card-desc { color: #94a3b8; font-size: 0.83rem; margin-bottom: 14px; line-height: 1.6; }
+
+    /* LINK ITEM */
+    .links { display: flex; flex-direction: column; gap: 7px; }
+    .lk {
+      display: flex; align-items: center; gap: 9px;
+      padding: 8px 13px; border-radius: 8px;
+      background: var(--tag-bg);
+      text-decoration: none; color: var(--text);
+      font-size: 0.82rem;
+      border: 1px solid transparent;
+      transition: all 0.15s;
+    }
+    .lk:hover { background: rgba(37,99,235,0.14); color: var(--accent2); border-color: rgba(37,99,235,0.3); }
+    .lk-ico { font-size: 13px; flex-shrink: 0; }
+    .lk-name { flex: 1; font-weight: 600; }
+    .lk-url { color: var(--muted); font-size: 0.71rem; max-width: 160px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .badge {
+      padding: 1px 8px; border-radius: 10px;
+      font-size: 0.67rem; font-weight: 700; flex-shrink: 0; letter-spacing: 0.03em;
+    }
+    .b-official { background: rgba(74,222,128,0.15); color: var(--green); }
+    .b-doc      { background: rgba(124,58,237,0.15); color: #a78bfa; }
+    .b-cn       { background: rgba(251,146,60,0.15); color: var(--orange); }
+    .b-tutorial { background: rgba(56,189,248,0.15); color: var(--accent2); }
+    .b-cloud    { background: rgba(244,63,94,0.15);  color: #fb7185; }
+    .b-community{ background: rgba(250,204,21,0.15); color: #fbbf24; }
+    .b-tool     { background: rgba(20,184,166,0.15); color: #2dd4bf; }
+
+    .tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 12px; }
+    .tag {
+      padding: 2px 9px; border-radius: 10px;
+      background: var(--tag-bg); color: var(--tag-text);
+      font-size: 0.71rem;
+    }
+
+    /* HIGHLIGHT CARD (STAR) */
+    .card.star {
+      background: linear-gradient(135deg, #131822 0%, #0f1a2e 100%);
+      border-color: rgba(37,99,235,0.4);
+    }
+
+    /* DIVIDER / LABEL */
+    .row-label {
+      color: var(--muted); font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      margin-bottom: 12px; margin-top: 20px;
+    }
+
+    /* FOOTER */
+    footer {
+      text-align: center; padding: 28px;
+      border-top: 1px solid var(--border);
+      color: var(--muted); font-size: 0.8rem;
+    }
+    footer a { color: var(--accent2); text-decoration: none; }
+
+    @media (max-width: 680px) {
+      h1 { font-size: 1.8rem; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header>
+  <div class="hero-badge">🦞 OpenClaw · AI 智能体龙虾</div>
+  <h1>OpenClaw 资源整合导航</h1>
+  <p class="subtitle">
+    汇聚 <strong>官方文档</strong> · <strong>大厂云服务教程</strong> · <strong>中文社区</strong> · <strong>英文社区</strong> · <strong>模型接入</strong> · <strong>Skills 扩展</strong>，一站检索
+  </p>
+  <div class="stats">
+    <div class="stat"><div class="stat-num">310k+</div><div class="stat-label">GitHub Stars</div></div>
+    <div class="stat"><div class="stat-num">30+</div><div class="stat-label">支持消息平台</div></div>
+    <div class="stat"><div class="stat-num">23</div><div class="stat-label">官方 GitHub 仓库</div></div>
+    <div class="stat"><div class="stat-num">276+</div><div class="stat-label">中文深度教程</div></div>
+  </div>
+</header>
+
+<!-- ═══ NAV ═══ -->
+<div class="nav-wrap">
+  <div class="nav-inner">
+    <span class="nav-label">筛选：</span>
+    <div class="nav-tab active" data-target="all">全部</div>
+    <div class="nav-tab" data-target="official">🏠 官方</div>
+    <div class="nav-tab" data-target="cn">🌏 中文社区</div>
+    <div class="nav-tab" data-target="cloud">☁️ 大厂云部署</div>
+    <div class="nav-tab" data-target="model">🤖 模型接入</div>
+    <div class="nav-tab" data-target="channel">💬 渠道接入</div>
+    <div class="nav-tab" data-target="en">🌐 英文社区</div>
+    <div class="nav-tab" data-target="skill">🧩 Skills 扩展</div>
+  </div>
+</div>
+
+<main>
+
+  <!-- ════ 官方资源 ════ -->
+  <section class="section" data-section="official">
+    <div class="section-head">
+      <div class="section-icon" style="background: rgba(37,99,235,0.15);">🏠</div>
+      <div>
+        <div class="section-title">官方核心资源</div>
+        <div class="section-sub">OpenClaw 官方主站、GitHub、文档中心及官方多语言站点</div>
+      </div>
+    </div>
+    <div class="grid grid-wide">
+
+      <div class="card star blue">
+        <div class="card-top">
+          <div class="card-icon">🦞</div>
+          <div>
+            <div class="card-name">OpenClaw 官方主站</div>
+            <div class="card-sub">openclaw.ai</div>
+          </div>
+        </div>
+        <div class="card-desc">OpenClaw 英文官方主站，展示产品功能（收邮件、发邮件、管日历、自动化任务）及下载入口。</div>
+        <div class="links">
+          <a class="lk" href="https://openclaw.ai/" target="_blank">
+            <span class="lk-ico">🌐</span><span class="lk-name">官方主站（EN）</span>
+            <span class="lk-url">openclaw.ai</span>
+            <span class="badge b-official">官方</span>
+          </a>
+          <a class="lk" href="https://openclaws.io/zh/" target="_blank">
+            <span class="lk-ico">🇨🇳</span><span class="lk-name">官方中文版</span>
+            <span class="lk-url">openclaws.io/zh</span>
+            <span class="badge b-official">官方</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">官方</span><span class="tag">产品介绍</span><span class="tag">下载</span></div>
+      </div>
+
+      <div class="card blue">
+        <div class="card-top">
+          <div class="card-icon">📖</div>
+          <div>
+            <div class="card-name">官方文档中心</div>
+            <div class="card-sub">docs.openclaw.ai</div>
+          </div>
+        </div>
+        <div class="card-desc">OpenClaw 完整官方文档，含安装、Gateway 配置、渠道接入、Skills 开发等。提供中英双语版本。</div>
+        <div class="links">
+          <a class="lk" href="https://docs.openclaw.ai/zh-CN" target="_blank">
+            <span class="lk-ico">📗</span><span class="lk-name">官方文档（中文）</span>
+            <span class="lk-url">docs.openclaw.ai/zh-CN</span>
+            <span class="badge b-doc">文档</span>
+          </a>
+          <a class="lk" href="https://docs.openclaw.ai/" target="_blank">
+            <span class="lk-ico">📘</span><span class="lk-name">官方文档（English）</span>
+            <span class="lk-url">docs.openclaw.ai</span>
+            <span class="badge b-doc">文档</span>
+          </a>
+          <a class="lk" href="https://docs.openclaw.ai/channels/discord" target="_blank">
+            <span class="lk-ico">💬</span><span class="lk-name">Discord 渠道文档</span>
+            <span class="lk-url">docs.openclaw.ai/channels/discord</span>
+            <span class="badge b-doc">文档</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">文档</span><span class="tag">中英双语</span><span class="tag">Gateway</span><span class="tag">Skills</span></div>
+      </div>
+
+      <div class="card blue">
+        <div class="card-top">
+          <div class="card-icon">🐙</div>
+          <div>
+            <div class="card-name">GitHub 官方组织</div>
+            <div class="card-sub">github.com/openclaw</div>
+          </div>
+        </div>
+        <div class="card-desc">OpenClaw 官方 GitHub 组织，拥有 23 个仓库，含主仓库源码、Skills 示例、SDK 等。310k+ Stars。</div>
+        <div class="links">
+          <a class="lk" href="https://github.com/openclaw" target="_blank">
+            <span class="lk-ico">🐙</span><span class="lk-name">GitHub 官方组织</span>
+            <span class="lk-url">github.com/openclaw</span>
+            <span class="badge b-official">官方</span>
+          </a>
+          <a class="lk" href="https://github.com/ben4claw/openclaw-tutorial" target="_blank">
+            <span class="lk-ico">📚</span><span class="lk-name">中文教程仓库（社区）</span>
+            <span class="lk-url">github.com/ben4claw/openclaw-tutorial</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+          <a class="lk" href="https://github.com/floriandarroman/best-openclaw-communities" target="_blank">
+            <span class="lk-ico">👥</span><span class="lk-name">最佳社区汇总（GitHub）</span>
+            <span class="lk-url">github.com/floriandarroman/…</span>
+            <span class="badge b-community">社区</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">开源</span><span class="tag">310k+ Stars</span><span class="tag">源码</span></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════ 中文文档/社区 ════ -->
+  <section class="section" data-section="cn">
+    <div class="section-head">
+      <div class="section-icon" style="background: rgba(251,146,60,0.15);">🌏</div>
+      <div>
+        <div class="section-title">中文文档 & 社区</div>
+        <div class="section-sub">国内各大中文站、社区、论坛和中文教程入口</div>
+      </div>
+    </div>
+    <div class="grid">
+
+      <div class="card orange">
+        <div class="card-top">
+          <div class="card-icon">🦞</div>
+          <div>
+            <div class="card-name">OpenClaw 中文官网</div>
+            <div class="card-sub">openclaw.cc</div>
+          </div>
+        </div>
+        <div class="card-desc">OpenClaw 中文站，提供文档、安装指南、Skills 扩展、新手帮助与常见问题，覆盖本地部署到高级配置。</div>
+        <div class="links">
+          <a class="lk" href="https://openclaw.cc/" target="_blank">
+            <span class="lk-ico">🌐</span><span class="lk-name">OpenClaw 中文站</span>
+            <span class="lk-url">openclaw.cc</span>
+            <span class="badge b-cn">中文</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">中文</span><span class="tag">文档</span><span class="tag">Skills</span><span class="tag">新手帮助</span></div>
+      </div>
+
+      <div class="card orange">
+        <div class="card-top">
+          <div class="card-icon">🐉</div>
+          <div>
+            <div class="card-name">龙虾中文网</div>
+            <div class="card-sub">openclaw.cn</div>
+          </div>
+        </div>
+        <div class="card-desc">最全面的中文 OpenClaw 站，含安装教程、Skills 插件下载、最新资讯和官方社群入口。</div>
+        <div class="links">
+          <a class="lk" href="https://www.openclaw.cn/" target="_blank">
+            <span class="lk-ico">🌐</span><span class="lk-name">龙虾中文网</span>
+            <span class="lk-url">openclaw.cn</span>
+            <span class="badge b-cn">中文</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">中文</span><span class="tag">安装</span><span class="tag">Skills 下载</span></div>
+      </div>
+
+      <div class="card orange">
+        <div class="card-top">
+          <div class="card-icon">🇨🇳</div>
+          <div>
+            <div class="card-name">OpenClaw 中国社区</div>
+            <div class="card-sub">open-claw.org.cn</div>
+          </div>
+        </div>
+        <div class="card-desc">中国社区官方指南，提供 3 分钟快速启动、本地部署说明，系统要求 Node ≥22。</div>
+        <div class="links">
+          <a class="lk" href="https://open-claw.org.cn/guide/getting-started" target="_blank">
+            <span class="lk-ico">🚀</span><span class="lk-name">快速开始指南</span>
+            <span class="lk-url">open-claw.org.cn/guide/getting-started</span>
+            <span class="badge b-cn">中文</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">中文社区</span><span class="tag">快速开始</span><span class="tag">3分钟部署</span></div>
+      </div>
+
+      <div class="card orange">
+        <div class="card-top">
+          <div class="card-icon">📋</div>
+          <div>
+            <div class="card-name">OpenClaw 中文文档（276篇）</div>
+            <div class="card-sub">openclaw-docs.dx3n.cn</div>
+          </div>
+        </div>
+        <div class="card-desc">完整中文文档，276 篇深度教程，覆盖安装、源码剖析、Gateway、WhatsApp/Telegram/Discord/飞书接入。</div>
+        <div class="links">
+          <a class="lk" href="https://openclaw-docs.dx3n.cn/tutorials/" target="_blank">
+            <span class="lk-ico">📚</span><span class="lk-name">教程中心（276篇）</span>
+            <span class="lk-url">openclaw-docs.dx3n.cn/tutorials</span>
+            <span class="badge b-cn">中文</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">276篇</span><span class="tag">深度教程</span><span class="tag">源码剖析</span></div>
+      </div>
+
+      <div class="card orange">
+        <div class="card-top">
+          <div class="card-icon">🎓</div>
+          <div>
+            <div class="card-name">OpenClaw 教程网</div>
+            <div class="card-sub">openclawtutorial.org</div>
+          </div>
+        </div>
+        <div class="card-desc">安装、Skills、渠道和 Gateway 详细图文教程，含 WhatsApp/Telegram/Discord/Slack/iMessage 配置。</div>
+        <div class="links">
+          <a class="lk" href="https://openclawtutorial.org/zh/docs" target="_blank">
+            <span class="lk-ico">📖</span><span class="lk-name">教程文档（中文）</span>
+            <span class="lk-url">openclawtutorial.org/zh/docs</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">安装</span><span class="tag">渠道配置</span><span class="tag">Gateway</span></div>
+      </div>
+
+      <div class="card orange">
+        <div class="card-top">
+          <div class="card-icon">💡</div>
+          <div>
+            <div class="card-name">知乎 OpenClaw 专区</div>
+            <div class="card-sub">zhihu.com</div>
+          </div>
+        </div>
+        <div class="card-desc">知乎上质量最高的 OpenClaw 中文教程集合，包含超全指南、从零入门、部署对比等文章。</div>
+        <div class="links">
+          <a class="lk" href="https://zhuanlan.zhihu.com/p/2014069779581903993" target="_blank">
+            <span class="lk-ico">📝</span><span class="lk-name">OpenClaw 超全指南（2026.3）</span>
+            <span class="lk-url">zhuanlan.zhihu.com</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+          <a class="lk" href="https://zhuanlan.zhihu.com/p/2002485126714644013" target="_blank">
+            <span class="lk-ico">📝</span><span class="lk-name">从安装到入门完全指南</span>
+            <span class="lk-url">zhuanlan.zhihu.com</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+          <a class="lk" href="https://zhuanlan.zhihu.com/p/2003131482483482878" target="_blank">
+            <span class="lk-ico">☁️</span><span class="lk-name">七大云厂商对比部署指南</span>
+            <span class="lk-url">zhuanlan.zhihu.com</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">知乎</span><span class="tag">中文</span><span class="tag">高质量</span></div>
+      </div>
+
+      <div class="card orange">
+        <div class="card-top">
+          <div class="card-icon">📺</div>
+          <div>
+            <div class="card-name">CSDN / 博客园 教程</div>
+            <div class="card-sub">CSDN & 博客园</div>
+          </div>
+        </div>
+        <div class="card-desc">国内技术博客平台上大量 OpenClaw 全平台安装、架构解析等保姆级教程。</div>
+        <div class="links">
+          <a class="lk" href="https://blog.csdn.net/m0_73370855/article/details/158810969" target="_blank">
+            <span class="lk-ico">💻</span><span class="lk-name">全平台安装保姆教程（CSDN）</span>
+            <span class="lk-url">blog.csdn.net</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+          <a class="lk" href="https://blog.csdn.net/xyghehehehe/article/details/159291050" target="_blank">
+            <span class="lk-ico">🔬</span><span class="lk-name">Channels 架构深度解析（CSDN）</span>
+            <span class="lk-url">blog.csdn.net</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+          <a class="lk" href="https://www.cnblogs.com/wisilian21/p/19726897" target="_blank">
+            <span class="lk-ico">🪟</span><span class="lk-name">Windows+Ollama 完整指南（博客园）</span>
+            <span class="lk-url">cnblogs.com</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">CSDN</span><span class="tag">博客园</span><span class="tag">保姆级</span></div>
+      </div>
+
+      <div class="card orange">
+        <div class="card-top">
+          <div class="card-icon">📢</div>
+          <div>
+            <div class="card-name">腾讯新闻报道</div>
+            <div class="card-sub">news.qq.com</div>
+          </div>
+        </div>
+        <div class="card-desc">腾讯新闻深度报道《一篇文章说清楚OpenClaw》，适合快速了解产品全貌。</div>
+        <div class="links">
+          <a class="lk" href="https://news.qq.com/rain/a/20260308A039K200" target="_blank">
+            <span class="lk-ico">📰</span><span class="lk-name">一篇文章说清楚 OpenClaw（腾讯新闻）</span>
+            <span class="lk-url">news.qq.com</span>
+            <span class="badge b-cn">中文</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">入门</span><span class="tag">产品解读</span></div>
+      </div>
+
+      <div class="card orange">
+        <div class="card-top">
+          <div class="card-icon">🎬</div>
+          <div>
+            <div class="card-name">平台与渠道中文教程</div>
+            <div class="card-sub">claw.x-qu.com</div>
+          </div>
+        </div>
+        <div class="card-desc">完整的 OpenClaw 平台渠道中文教程，含 WhatsApp、Telegram、Discord、Slack、iMessage、Signal 配置详解。</div>
+        <div class="links">
+          <a class="lk" href="https://claw.x-qu.com/guide/platforms-channels.html" target="_blank">
+            <span class="lk-ico">💬</span><span class="lk-name">平台与渠道配置详解</span>
+            <span class="lk-url">claw.x-qu.com/guide/platforms-channels.html</span>
+            <span class="badge b-cn">中文</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">Telegram</span><span class="tag">WhatsApp</span><span class="tag">Discord</span></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════ 大厂云平台部署 ════ -->
+  <section class="section" data-section="cloud">
+    <div class="section-head">
+      <div class="section-icon" style="background: rgba(244,63,94,0.12);">☁️</div>
+      <div>
+        <div class="section-title">大厂云平台官方部署教程</div>
+        <div class="section-sub">腾讯云、阿里云（阿里巴巴云）官方出品的 OpenClaw 部署指南</div>
+      </div>
+    </div>
+    <div class="grid">
+
+      <div class="card" style="border-color: rgba(20,110,253,0.35);">
+        <div class="card-top">
+          <div class="card-icon">🔵</div>
+          <div>
+            <div class="card-name">腾讯云 官方教程</div>
+            <div class="card-sub">cloud.tencent.com</div>
+          </div>
+        </div>
+        <div class="card-desc">腾讯云开发者社区出品多篇 OpenClaw 官方部署教程，包括轻量应用服务器（Lighthouse）5 分钟极速部署方案。</div>
+        <div class="links">
+          <a class="lk" href="https://cloud.tencent.com/developer/article/2634683" target="_blank">
+            <span class="lk-ico">⚡</span><span class="lk-name">5分钟极速部署（腾讯云Lighthouse）</span>
+            <span class="lk-url">cloud.tencent.com</span>
+            <span class="badge b-cloud">腾讯云</span>
+          </a>
+          <a class="lk" href="https://cloud.tencent.com/developer/article/2635976" target="_blank">
+            <span class="lk-ico">📋</span><span class="lk-name">一键安装教程（轻量服务器）</span>
+            <span class="lk-url">cloud.tencent.com</span>
+            <span class="badge b-cloud">腾讯云</span>
+          </a>
+          <a class="lk" href="https://cloud.tencent.com/developer/article/2633163" target="_blank">
+            <span class="lk-ico">⚙️</span><span class="lk-name">配置要求与实战教程</span>
+            <span class="lk-url">cloud.tencent.com</span>
+            <span class="badge b-cloud">腾讯云</span>
+          </a>
+          <a class="lk" href="https://cloud.tencent.com/developer/article/2642818" target="_blank">
+            <span class="lk-ico">🤖</span><span class="lk-name">OpenClaw + Ollama 深度集成</span>
+            <span class="lk-url">cloud.tencent.com</span>
+            <span class="badge b-cloud">腾讯云</span>
+          </a>
+          <a class="lk" href="https://cloud.tencent.com/developer/article/2634684" target="_blank">
+            <span class="lk-ico">🌐</span><span class="lk-name">阿里云环境配置与避坑指南</span>
+            <span class="lk-url">cloud.tencent.com（开发者社区）</span>
+            <span class="badge b-cloud">腾讯云</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">腾讯云</span><span class="tag">Lighthouse</span><span class="tag">官方出品</span><span class="tag">飞书机器人</span></div>
+      </div>
+
+      <div class="card" style="border-color: rgba(255,110,0,0.35);">
+        <div class="card-top">
+          <div class="card-icon">🟠</div>
+          <div>
+            <div class="card-name">阿里云 官方教程</div>
+            <div class="card-sub">developer.aliyun.com</div>
+          </div>
+        </div>
+        <div class="card-desc">阿里云开发者社区出品多篇官方 OpenClaw 部署教程，含一键部署方案和百炼 API 接入指南。</div>
+        <div class="links">
+          <a class="lk" href="https://www.alibabacloud.com/help/zh/simple-application-server/use-cases/quickly-deploy-and-use-openclaw" target="_blank">
+            <span class="lk-ico">⚡</span><span class="lk-name">官方：快速部署 OpenClaw（阿里云轻量）</span>
+            <span class="lk-url">alibabacloud.com/help/zh/…</span>
+            <span class="badge b-cloud">阿里云</span>
+          </a>
+          <a class="lk" href="https://developer.aliyun.com/article/1710459" target="_blank">
+            <span class="lk-ico">🔑</span><span class="lk-name">阿里云一键部署 + 百炼API（4步完成）</span>
+            <span class="lk-url">developer.aliyun.com</span>
+            <span class="badge b-cloud">阿里云</span>
+          </a>
+          <a class="lk" href="https://developer.aliyun.com/article/1715573" target="_blank">
+            <span class="lk-ico">🗂️</span><span class="lk-name">阿里云五种方案部署教程（2026版）</span>
+            <span class="lk-url">developer.aliyun.com</span>
+            <span class="badge b-cloud">阿里云</span>
+          </a>
+          <a class="lk" href="https://blog.csdn.net/shanwei_spider/article/details/159355088" target="_blank">
+            <span class="lk-ico">⏱️</span><span class="lk-name">15分钟极速搭建（阿里云ECS）</span>
+            <span class="lk-url">blog.csdn.net</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">阿里云</span><span class="tag">百炼API</span><span class="tag">ECS</span><span class="tag">官方出品</span></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════ 模型接入 ════ -->
+  <section class="section" data-section="model">
+    <div class="section-head">
+      <div class="section-icon" style="background: rgba(124,58,237,0.15);">🤖</div>
+      <div>
+        <div class="section-title">模型接入指南</div>
+        <div class="section-sub">Claude、GPT、Ollama 本地模型、Qwen 等接入教程</div>
+      </div>
+    </div>
+    <div class="grid">
+
+      <div class="card purple">
+        <div class="card-top">
+          <div class="card-icon">🦙</div>
+          <div>
+            <div class="card-name">Ollama 本地模型接入</div>
+            <div class="card-sub">零成本 · 离线运行</div>
+          </div>
+        </div>
+        <div class="card-desc">通过 Ollama 在本地运行 Qwen、Llama、Mistral 等开源模型，实现零 API 费用、完全离线的 AI 智能体。</div>
+        <div class="links">
+          <a class="lk" href="https://ollama.com/" target="_blank">
+            <span class="lk-ico">🦙</span><span class="lk-name">Ollama 官方主站</span>
+            <span class="lk-url">ollama.com</span>
+            <span class="badge b-tool">工具</span>
+          </a>
+          <a class="lk" href="https://zhuanlan.zhihu.com/p/2013622369059623797" target="_blank">
+            <span class="lk-ico">📝</span><span class="lk-name">OpenClaw+Ollama 跑本地大模型（知乎）</span>
+            <span class="lk-url">zhuanlan.zhihu.com</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+          <a class="lk" href="https://blog.eimoon.com/p/openclaw-ollama-local-llm-guide/" target="_blank">
+            <span class="lk-ico">📋</span><span class="lk-name">OpenClaw+Ollama 真正可行部署指南</span>
+            <span class="lk-url">blog.eimoon.com</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+          <a class="lk" href="https://apifox.com/apiskills/openclaw-ollama-provider-tutorial/" target="_blank">
+            <span class="lk-ico">🖼️</span><span class="lk-name">图文：如何添加 Ollama 供应商（Apifox）</span>
+            <span class="lk-url">apifox.com</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+          <a class="lk" href="https://blog.csdn.net/beihai_kun/article/details/158877588" target="_blank">
+            <span class="lk-ico">💻</span><span class="lk-name">快速部署 + Ollama 接入（CSDN）</span>
+            <span class="lk-url">blog.csdn.net</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+          <a class="lk" href="https://www.jumei.ai/article/openclaw-local-model-ollama-guide.html" target="_blank">
+            <span class="lk-ico">🔋</span><span class="lk-name">Ollama 离线运行零成本方案</span>
+            <span class="lk-url">jumei.ai</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">Ollama</span><span class="tag">Qwen</span><span class="tag">Llama</span><span class="tag">离线</span><span class="tag">零成本</span></div>
+      </div>
+
+      <div class="card purple">
+        <div class="card-top">
+          <div class="card-icon">🔮</div>
+          <div>
+            <div class="card-name">云端 API 模型接入</div>
+            <div class="card-sub">Claude · GPT · 百炼 · 等</div>
+          </div>
+        </div>
+        <div class="card-desc">通过 OpenClaw 接入 Anthropic Claude、OpenAI GPT、阿里百炼等云端大模型的官方指南。</div>
+        <div class="links">
+          <a class="lk" href="https://docs.openclaw.ai/zh-CN" target="_blank">
+            <span class="lk-ico">📖</span><span class="lk-name">官方模型配置文档</span>
+            <span class="lk-url">docs.openclaw.ai/zh-CN</span>
+            <span class="badge b-doc">文档</span>
+          </a>
+          <a class="lk" href="https://developer.aliyun.com/article/1710459" target="_blank">
+            <span class="lk-ico">🟠</span><span class="lk-name">接入阿里百炼 API 教程</span>
+            <span class="lk-url">developer.aliyun.com</span>
+            <span class="badge b-cloud">阿里云</span>
+          </a>
+          <a class="lk" href="https://lua.ren/openclaw/2026-02-15-openclaw-tutorial/index.html" target="_blank">
+            <span class="lk-ico">⚙️</span><span class="lk-name">配置大模型 Provider 完全教程</span>
+            <span class="lk-url">lua.ren</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">Claude</span><span class="tag">GPT</span><span class="tag">百炼</span><span class="tag">Provider</span></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════ 渠道/平台接入 ════ -->
+  <section class="section" data-section="channel">
+    <div class="section-head">
+      <div class="section-icon" style="background: rgba(74,222,128,0.12);">💬</div>
+      <div>
+        <div class="section-title">渠道 & 平台接入</div>
+        <div class="section-sub">WhatsApp、Telegram、Discord、Slack、iMessage 等 30+ 平台接入文档</div>
+      </div>
+    </div>
+    <div class="grid">
+
+      <div class="card green">
+        <div class="card-top">
+          <div class="card-icon">📱</div>
+          <div>
+            <div class="card-name">官方支持渠道总览</div>
+            <div class="card-sub">30+ 平台接入</div>
+          </div>
+        </div>
+        <div class="card-desc">OpenClaw 官方支持 WhatsApp、Telegram、Discord、Slack、iMessage、Signal 等 30+ 消息平台。</div>
+        <div class="links">
+          <a class="lk" href="https://docs.openclaw.ai/zh-CN" target="_blank">
+            <span class="lk-ico">📖</span><span class="lk-name">官方渠道配置文档</span>
+            <span class="lk-url">docs.openclaw.ai</span>
+            <span class="badge b-doc">文档</span>
+          </a>
+          <a class="lk" href="https://openclawtutorial.org/zh/docs" target="_blank">
+            <span class="lk-ico">📋</span><span class="lk-name">渠道接入图文教程（中文）</span>
+            <span class="lk-url">openclawtutorial.org/zh/docs</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+          <a class="lk" href="https://claw.x-qu.com/guide/platforms-channels.html" target="_blank">
+            <span class="lk-ico">🔗</span><span class="lk-name">平台与渠道详细配置</span>
+            <span class="lk-url">claw.x-qu.com</span>
+            <span class="badge b-cn">中文</span>
+          </a>
+        </div>
+        <div class="tags">
+          <span class="tag">WhatsApp</span><span class="tag">Telegram</span>
+          <span class="tag">Discord</span><span class="tag">Slack</span>
+          <span class="tag">iMessage</span><span class="tag">Signal</span>
+        </div>
+      </div>
+
+      <div class="card green">
+        <div class="card-top">
+          <div class="card-icon">🤖</div>
+          <div>
+            <div class="card-name">Discord 渠道接入</div>
+            <div class="card-sub">docs.openclaw.ai/channels/discord</div>
+          </div>
+        </div>
+        <div class="card-desc">官方 Discord 渠道配置文档，支持 DM 和频道消息，通过官方 Discord gateway 接入。</div>
+        <div class="links">
+          <a class="lk" href="https://docs.openclaw.ai/channels/discord" target="_blank">
+            <span class="lk-ico">💜</span><span class="lk-name">Discord 官方配置文档</span>
+            <span class="lk-url">docs.openclaw.ai/channels/discord</span>
+            <span class="badge b-doc">文档</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">Discord</span><span class="tag">官方文档</span></div>
+      </div>
+
+      <div class="card green">
+        <div class="card-top">
+          <div class="card-icon">🌐</div>
+          <div>
+            <div class="card-name">Gateway 网关配置</div>
+            <div class="card-sub">本地 Dashboard & Token</div>
+          </div>
+        </div>
+        <div class="card-desc">OpenClaw Gateway 是连接所有渠道的核心，配置 Token、设备授权、本地 Dashboard 管理界面。</div>
+        <div class="links">
+          <a class="lk" href="https://docs.openclaw.ai/zh-CN" target="_blank">
+            <span class="lk-ico">⚙️</span><span class="lk-name">Gateway 官方文档</span>
+            <span class="lk-url">docs.openclaw.ai/zh-CN</span>
+            <span class="badge b-doc">文档</span>
+          </a>
+          <a class="lk" href="https://openclawgithub.cc/guide/skills/" target="_blank">
+            <span class="lk-ico">🔧</span><span class="lk-name">技能与扩展配置指南</span>
+            <span class="lk-url">openclawgithub.cc/guide/skills</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">Gateway</span><span class="tag">Dashboard</span><span class="tag">Token</span></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════ 英文社区 ════ -->
+  <section class="section" data-section="en">
+    <div class="section-head">
+      <div class="section-icon" style="background: rgba(250,204,21,0.12);">🌐</div>
+      <div>
+        <div class="section-title">英文社区 & 国际资源</div>
+        <div class="section-sub">Reddit、Discord、英文 Hub、Twitter/X 等国际社区入口</div>
+      </div>
+    </div>
+    <div class="grid">
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">🟠</div>
+          <div>
+            <div class="card-name">Reddit — r/OpenClaw</div>
+            <div class="card-sub">reddit.com/r/OpenClaw</div>
+          </div>
+        </div>
+        <div class="card-desc">OpenClaw 官方 Reddit 社区，长篇讨论、案例展示和技术问答。</div>
+        <div class="links">
+          <a class="lk" href="https://www.reddit.com/r/OpenClaw/" target="_blank">
+            <span class="lk-ico">🟠</span><span class="lk-name">r/OpenClaw</span>
+            <span class="lk-url">reddit.com/r/OpenClaw</span>
+            <span class="badge b-community">社区</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">Reddit</span><span class="tag">英文</span><span class="tag">讨论</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">💜</div>
+          <div>
+            <div class="card-name">Discord 官方服务器</div>
+            <div class="card-sub">OpenClaw Community Discord</div>
+          </div>
+        </div>
+        <div class="card-desc">OpenClaw 官方 Discord 服务器，实时问答、技术支持、900+ GitHub 贡献者聚集地。</div>
+        <div class="links">
+          <a class="lk" href="https://open-claw.social/open-claw-community.html" target="_blank">
+            <span class="lk-ico">💜</span><span class="lk-name">OpenClaw Community 入口</span>
+            <span class="lk-url">open-claw.social</span>
+            <span class="badge b-community">社区</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">Discord</span><span class="tag">官方</span><span class="tag">实时支持</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">🐦</div>
+          <div>
+            <div class="card-name">Twitter / X — @OpenClawAI</div>
+            <div class="card-sub">twitter.com/OpenClawAI</div>
+          </div>
+        </div>
+        <div class="card-desc">官方 Twitter/X 账号，发布最新公告、功能更新和重要资讯。</div>
+        <div class="links">
+          <a class="lk" href="https://twitter.com/OpenClawAI" target="_blank">
+            <span class="lk-ico">🐦</span><span class="lk-name">@OpenClawAI</span>
+            <span class="lk-url">twitter.com/OpenClawAI</span>
+            <span class="badge b-official">官方</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">Twitter/X</span><span class="tag">官方公告</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">🗂️</div>
+          <div>
+            <div class="card-name">OpenClaw Hub（英文资源站）</div>
+            <div class="card-sub">openclaw-hub.com</div>
+          </div>
+        </div>
+        <div class="card-desc">汇集文档、社区 Skills、问题排查和应用案例的英文资源中心。</div>
+        <div class="links">
+          <a class="lk" href="https://openclaw-hub.com/" target="_blank">
+            <span class="lk-ico">🌐</span><span class="lk-name">OpenClaw Hub</span>
+            <span class="lk-url">openclaw-hub.com</span>
+            <span class="badge b-community">社区</span>
+          </a>
+          <a class="lk" href="https://openclawagenthub.com/resources" target="_blank">
+            <span class="lk-ico">📦</span><span class="lk-name">OpenClaw Agent Hub（50项精选资源）</span>
+            <span class="lk-url">openclawagenthub.com/resources</span>
+            <span class="badge b-community">社区</span>
+          </a>
+          <a class="lk" href="https://claw.im/resources.html" target="_blank">
+            <span class="lk-ico">📋</span><span class="lk-name">Guides & Resources 精选</span>
+            <span class="lk-url">claw.im/resources.html</span>
+            <span class="badge b-community">社区</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">英文</span><span class="tag">资源汇总</span><span class="tag">50项精选</span></div>
+      </div>
+
+      <div class="card">
+        <div class="card-top">
+          <div class="card-icon">💬</div>
+          <div>
+            <div class="card-name">OpenClaw Forum</div>
+            <div class="card-sub">openclawforum.org</div>
+          </div>
+        </div>
+        <div class="card-desc">OpenClaw 官方论坛，AI Agent 技术讨论社区，趋势话题、技术问答、项目展示。</div>
+        <div class="links">
+          <a class="lk" href="https://openclawforum.org/" target="_blank">
+            <span class="lk-ico">💬</span><span class="lk-name">OpenClaw Forum</span>
+            <span class="lk-url">openclawforum.org</span>
+            <span class="badge b-community">社区</span>
+          </a>
+          <a class="lk" href="https://clawtrove.com/community" target="_blank">
+            <span class="lk-ico">🗂️</span><span class="lk-name">ClawTrove — 13个社区合集</span>
+            <span class="lk-url">clawtrove.com/community</span>
+            <span class="badge b-community">社区</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">论坛</span><span class="tag">讨论</span><span class="tag">展示</span></div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ════ Skills 扩展 ════ -->
+  <section class="section" data-section="skill">
+    <div class="section-head">
+      <div class="section-icon" style="background: rgba(20,184,166,0.12);">🧩</div>
+      <div>
+        <div class="section-title">Skills 技能扩展</div>
+        <div class="section-sub">OpenClaw Skills 插件开发文档、扩展市场及实战案例</div>
+      </div>
+    </div>
+    <div class="grid">
+
+      <div class="card" style="border-color: rgba(20,184,166,0.3);">
+        <div class="card-top">
+          <div class="card-icon">🧩</div>
+          <div>
+            <div class="card-name">Skills 官方文档</div>
+            <div class="card-sub">技能扩展单元</div>
+          </div>
+        </div>
+        <div class="card-desc">Skills 是 OpenClaw 的能力扩展单元，类似插件，可连接浏览器、画布、节点、定时任务和外部服务。</div>
+        <div class="links">
+          <a class="lk" href="https://docs.openclaw.ai/zh-CN" target="_blank">
+            <span class="lk-ico">📖</span><span class="lk-name">Skills 官方文档</span>
+            <span class="lk-url">docs.openclaw.ai/zh-CN</span>
+            <span class="badge b-doc">文档</span>
+          </a>
+          <a class="lk" href="https://openclawgithub.cc/guide/skills/" target="_blank">
+            <span class="lk-ico">🔧</span><span class="lk-name">技能与扩展指南（中文）</span>
+            <span class="lk-url">openclawgithub.cc/guide/skills</span>
+            <span class="badge b-cn">中文</span>
+          </a>
+          <a class="lk" href="https://www.openclaw.cn/" target="_blank">
+            <span class="lk-ico">⬇️</span><span class="lk-name">Skills 插件下载（龙虾中文网）</span>
+            <span class="lk-url">openclaw.cn</span>
+            <span class="badge b-cn">中文</span>
+          </a>
+          <a class="lk" href="https://openclaw.cc/" target="_blank">
+            <span class="lk-ico">🌐</span><span class="lk-name">Skills 扩展文档（openclaw.cc）</span>
+            <span class="lk-url">openclaw.cc</span>
+            <span class="badge b-cn">中文</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">Skills</span><span class="tag">插件</span><span class="tag">浏览器控制</span><span class="tag">Obsidian</span><span class="tag">搜索API</span></div>
+      </div>
+
+      <div class="card" style="border-color: rgba(20,184,166,0.3);">
+        <div class="card-top">
+          <div class="card-icon">🛠️</div>
+          <div>
+            <div class="card-name">实战 Skills 案例</div>
+            <div class="card-sub">百度Skills · Coding Agent · 多Agent</div>
+          </div>
+        </div>
+        <div class="card-desc">社区整理的 Skills 实战教程，含百度 Skills 生态、Coding Agent、多 Agent 头脑风暴等高阶用法。</div>
+        <div class="links">
+          <a class="lk" href="https://github.com/ben4claw/openclaw-tutorial" target="_blank">
+            <span class="lk-ico">🐙</span><span class="lk-name">中文教程仓库（含Skills实战）</span>
+            <span class="lk-url">github.com/ben4claw/openclaw-tutorial</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+          <a class="lk" href="https://lua.ren/openclaw/2026-02-15-openclaw-tutorial/index.html" target="_blank">
+            <span class="lk-ico">🔭</span><span class="lk-name">Skills + Obsidian + 搜索API 实战</span>
+            <span class="lk-url">lua.ren</span>
+            <span class="badge b-tutorial">教程</span>
+          </a>
+        </div>
+        <div class="tags"><span class="tag">Coding Agent</span><span class="tag">多Agent</span><span class="tag">百度Skills</span></div>
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  🦞 OpenClaw 龙虾资源导航 · 整理于 2026 年 3 月 26 日 ·
+  数据来源：<a href="https://openclaw.ai" target="_blank">openclaw.ai</a> 官方及各大社区
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.nav-tab');
+  const sections = document.querySelectorAll('.section[data-section]');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+
+      const target = tab.dataset.target;
+      sections.forEach(s => {
+        if (target === 'all') {
+          s.style.display = '';
+        } else {
+          s.style.display = (s.dataset.section === target) ? '' : 'none';
+        }
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
